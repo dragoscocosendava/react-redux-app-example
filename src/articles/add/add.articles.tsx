@@ -24,7 +24,7 @@ const AddNewArticleComponent: FunctionComponent<{
     // Iterate through the form elements and update the article's title,body data value
     Array.from((ev.target as HTMLFormElement).elements).forEach((fieldElement: Element) => {
       // we only care about form elements (input and textarea in our case)
-      if (!(fieldElement instanceof HTMLInputElement || fieldElement instanceof HTMLTextAreaElement))) return;
+      if (!(fieldElement instanceof HTMLInputElement || fieldElement instanceof HTMLTextAreaElement)) return;
       // update article's title and body data
       articleData[fieldElement.name as 'title' | 'body'] = fieldElement.value;
     });
