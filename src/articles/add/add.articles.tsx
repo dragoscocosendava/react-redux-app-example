@@ -17,13 +17,15 @@ const AddNewArticleComponent: FunctionComponent<{
     ev.preventDefault();
     // Initialize the article object data
     let articleData: IArticles.Item = {
-      id: Math.ceil(Math.random() * 100),
+      id: Math.ceil(Math.random() * 100), // not really unique (it's just an example)
       title: '',
       body: '',
     };
     // Iterate through the form elements and update the article's title,body data value
     Array.from((ev.target as HTMLFormElement).elements).forEach((fieldElement: Element) => {
-      if (!(fieldElement instanceof HTMLInputElement)) return; // we only care about form elements
+      // we only care about form elements (input and textarea in our case)
+      if (!(fieldElement instanceof HTMLInputElement || fieldElement instanceof HTMLTextAreaElement))) return;
+      // update article's title and body data
       articleData[fieldElement.name as 'title' | 'body'] = fieldElement.value;
     });
     // trigger a state change
